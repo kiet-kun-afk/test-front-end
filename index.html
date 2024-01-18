@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .start-100 {
+            left: 90% !important;
+        }
+    </style>
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl" class="container">
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand-xxl bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5 text-white col" href="#">
+                    <h5><i class="fa-brands fa-twitter"></i> DebugZoo.</h5>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <div class="text-white d-flex m-auto" role="search">
+                        <h5><i class="fa-brands fa-github"></i> {{list.length}} <i class="fa-brands fa-bitcoin"></i>
+                            {{money|number:0}}</h5>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row mt-5 d-flex">
+        <div ng-repeat="i in list | limitTo:limit:start" class="col-2 card border-0">
+            <div class="position-relative border-0">
+                <img class="img-fluid" src="img/{{i.image}}">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <i class="fa-solid fa-heart"></i> {{i.energy}}
+                </span>
+            </div>
+            <div class="text-center">{{i.name}}</div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button ng-click="nuoi(i)" type="button" class="text-white btn btn-success"><i
+                        class="fa-solid fa-heart"></i>
+                    <br>
+                    Nuôi</button>
+                <button ng-click="xiec(i)" type="button" class="text-success btn btn-white"><i
+                        class="fa-solid fa-star-of-life"></i>
+                    <br>
+                    Xiếc</button>
+            </div>
+        </div>
+        <ul class="pagination justify-content-center mt-3">
+            <li class="page-item {{(page == 1) ? 'disabled' : ''}}">
+                <a class="page-link" href="#" aria-label="Previous" ng-click="showPage(page - 1)">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="p in numberOfPage" class="page-item {{page == p + 1 ? 'active' : ''}}"><a class="page-link"
+                    href="#" ng-click="showPage(p + 1)">{{p + 1}}</a></li>
+            <li class="page-item {{(page == totalPage) ? 'disabled' : ''}}">
+                <a class="page-link" href="#" aria-label="Next" ng-click="showPage(page + 1)">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <footer class="bg-white rounded">
+        <div class="container text-center">
+            <span class="font-weight-light">
+                DebugZoo.© 2023 - Thực hiện bởi PS01234 - Nguyễn Văn A
+            </span>
+        </div>
+    </footer>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="https://kit.fontawesome.com/9fe08cb9b1.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
